@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bakery Rush</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>🍰 BAKERY RUSH</h1>
+
+<button onclick="startGame()">PLAY</button>
+
+<div id="game">
+  <div id="player">👨‍🍳</div>
+</div>
+
+<div id="controls">
+  <button onclick="addCommand('right')">➡️</button>
+  <button onclick="addCommand('left')">⬅️</button>
+  <button onclick="addCommand('jump')">⬆️</button>
+</div>
+
+<button onclick="runCode()">RUN</button>
+
+<ul id="codeList"></ul>
+
+<script src="script.js"></script>
+
+</body>
+</html>
