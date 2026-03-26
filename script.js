@@ -1,8 +1,21 @@
-let commands = [];
-let player = document.getElementById("player");
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
 
-function startGame() {
-  document.getElementById("game").style.display = "block";
+let player = { x: 50, y: 200, size: 30 };
+let cake = { x: 400, y: 200, size: 30 };
+
+let commands = [];
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // player
+  ctx.fillStyle = "pink";
+  ctx.fillRect(player.x, player.y, player.size, player.size);
+
+  // cake
+  ctx.fillStyle = "brown";
+  ctx.fillRect(cake.x, cake.y, cake.size, cake.size);
 }
 
 function addCommand(cmd) {
@@ -13,29 +26,30 @@ function addCommand(cmd) {
 function runCode() {
   let i = 0;
 
-  function execute() {
+  function run() {
     if (i >= commands.length) return;
 
     let cmd = commands[i];
 
-    if (cmd === "right") {
-      player.style.left = (player.offsetLeft + 50) + "px";
-    }
+    if (cmd === "right") player.x += 50;
+    if (cmd === "left") player.x -= 50;
+    if (cmd === "jump") player.y -= 50;
 
-    if (cmd === "left") {
-      player.style.left = (player.offsetLeft - 50) + "px";
-    }
-
-    if (cmd === "jump") {
-      player.style.bottom = "50px";
-      setTimeout(() => {
-        player.style.bottom = "0px";
-      }, 200);
-    }
+    draw();
+    checkWin();
 
     i++;
-    setTimeout(execute, 500);
+    setTimeout(run, 500);
   }
 
-  execute();
+  run();
 }
+
+function checkWin() {
+  if (Math.abs(player.x - cake.x) < 30) {
+    alert("🎉 Kamu berhasil ambil kue!");
+  }
+}
+
+// initial draw
+draw();
