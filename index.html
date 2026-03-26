@@ -7,21 +7,18 @@
 
 <body>
 
-<h1>🍰 BAKERY RUSH</h1>
+<h1>🍰 Bakery Rush</h1>
+<p>Belajar coding sambil jadi chef!</p>
 
-<button onclick="startGame()">PLAY</button>
+<canvas id="gameCanvas" width="500" height="300"></canvas>
 
-<div id="game">
-  <div id="player">👨‍🍳</div>
-</div>
-
-<div id="controls">
+<div class="controls">
   <button onclick="addCommand('right')">➡️</button>
   <button onclick="addCommand('left')">⬅️</button>
   <button onclick="addCommand('jump')">⬆️</button>
 </div>
 
-<button onclick="runCode()">RUN</button>
+<button onclick="runCode()">RUN CODE</button>
 
 <ul id="codeList"></ul>
 
